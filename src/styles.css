@@ -1,0 +1,183 @@
+/* Add global styles here if needed */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg, #18122B 0%, #a259f7 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+  z-index: 0;
+}
+
+header {
+  background: #0078d4;
+  color: #fff;
+  padding: 24px 0 16px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+footer {
+  background: #231942;
+  color: #a259f7;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 1rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #a259f7;
+  z-index: 100;
+}
+
+.main-container {
+  min-height: calc(100vh - 100px); /* Leave space for footer */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 60px; /* Space below header */
+  padding-bottom: 100px; /* Space above footer */
+}
+
+.evaluator-card {
+  background: rgba(24,18,43,0.98);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(162,89,247,0.22);
+  padding: 40px 48px 32px 48px;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  width: 100%;
+  border: 2px solid #a259f7;
+  border-radius: 18px;
+  padding: 18px;
+  font-size: 1.1rem;
+  background: #18122B;
+  color: #fff;
+  box-sizing: border-box;
+  margin-bottom: 28px;
+  resize: none;
+  min-height: 80px;
+  max-height: 120px;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(162,89,247,0.08);
+}
+
+textarea:focus {
+  border: 1.5px solid #0078d4;
+  outline: none;
+}
+
+button {
+  background: linear-gradient(90deg, #a259f7 0%, #18122B 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 36px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(162,89,247,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #18122B 0%, #a259f7 100%);
+  box-shadow: 0 4px 16px rgba(162,89,247,0.18);
+}
+
+.result-container {
+  background: #f7f9fa;
+  border: 1px solid #e1e4e8;
+  border-radius: 12px;
+  padding: 22px 28px;
+  margin-top: 24px;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.04);
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.result-container p {
+  margin: 10px 0;
+  font-size: 1.15rem;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.status-icon {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.status-compliant {
+  color: #27ae60;
+}
+
+.status-noncompliant {
+  color: #e74c3c;
+}
+
+.suggestions-list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.suggestions-list li {
+  margin-bottom: 8px;
+  color: #d35400;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    padding: 16px 0 80px 0;
+  }
+  .evaluator-card {
+    padding: 18px 10px;
+    max-width: 98vw;
+  }
+  .result-container {
+    padding: 14px 8px;
+  }
+}

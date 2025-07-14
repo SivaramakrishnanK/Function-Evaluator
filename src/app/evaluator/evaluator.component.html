@@ -1,0 +1,43 @@
+<div class="evaluator-card">
+  <h2>Paste Your Function</h2>
+  <textarea [(ngModel)]="functionInput" rows="12" placeholder="Paste your function here"></textarea>
+  <br>
+  <button (click)="evaluateFunction()" [disabled]="!functionInput.trim()">Evaluate</button>
+</div>
+
+<!-- Modal overlay for results -->
+<div *ngIf="showResult" class="result-modal-overlay" tabindex="-1" aria-modal="true" role="dialog">
+  <div class="result-modal-card">
+    <div class="result-modal-header">
+      <span class="result-modal-title">Evaluation Result</span>
+      <button class="result-modal-close" (click)="closeResult()" aria-label="Close">&times;</button>
+    </div>
+    <div class="status-row">
+      <span
+        class="status-icon"
+        [ngClass]="{
+          'status-compliant': evaluationResult?.complianceStatus === 'Compliant',
+          'status-noncompliant': evaluationResult?.complianceStatus !== 'Compliant'
+        }"
+        >
+        <ng-container *ngIf="evaluationResult?.complianceStatus === 'Compliant'; else noncompliant">
+          <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+            <circle cx="12" cy="12" r="12" fill="#a259f7" opacity="0.15"/>
+            <path d="M7 13l3 3 7-7" stroke="#a259f7" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </ng-container>
+        <ng-template #noncompliant>
+          <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+            <circle cx="12" cy="12" r="12" fill="#e74c3c" opacity="0.15"/>
+            <path d="M8 8l8 8M16 8l-8 8" stroke="#e74c3c" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </ng-template>
+      </span>
+      <span class="status-label">
+        {{evaluationResult?.complianceStatus}}
+      </span>
+    </div>
+    <p class="score-row"><strong>Score:</strong> {{evaluationResult?.score}}</p>
+    <app-suggestions [suggestions]="evaluationResult?.suggestions"></app-suggestions>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div *ngIf="suggestions && suggestions.length">
+  <h3>Suggestions</h3>
+  <ul class="suggestions-list">
+    <li *ngFor="let suggestion of suggestions">
+      <svg width="16" height="16" style="vertical-align:middle;margin-right:6px;" fill="#d35400" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#d35400" opacity="0.15"/>
+        <path d="M12 7v5l3 3" stroke="#d35400" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      {{suggestion}}
+    </li>
+  </ul>
+</div>
